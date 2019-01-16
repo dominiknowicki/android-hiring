@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="at.allaboutapps.a3hiring.MainActivity">
+      tools:context="at.allaboutapps.a3hiring.ui.list.ListActivity">
     <item
         android:id="@+id/menuSort"
         android:orderInCategory="100"
