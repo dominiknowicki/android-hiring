@@ -6,18 +6,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import at.allaboutapps.allaboutclubs.AppImpl
 import at.allaboutapps.allaboutclubs.R
 import at.allaboutapps.allaboutclubs.api.DataSource
 import at.allaboutapps.allaboutclubs.api.models.Club
 import at.allaboutapps.allaboutclubs.ui.customviews.CustomToast
+import at.allaboutapps.allaboutclubs.ui.details.DetailsActivity
 import at.allaboutapps.allaboutclubs.ui.list.clublistrecycler.ClubListAdapter
 import at.allaboutapps.allaboutclubs.ui.list.clublistrecycler.ClubListRecyclerCallback
 import at.allaboutapps.allaboutclubs.utils.SortOrder
 import at.allaboutapps.allaboutclubs.utils.setHorizontalDivider
-import at.allaboutapps.allaboutclubs.utils.sort
-import at.allaboutapps.allaboutclubs.utils.switch
 import kotlinx.android.synthetic.main.activity_clubs_list.*
 import java.util.*
 
@@ -36,7 +34,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
         this.overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clubs_list)
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+        setSupportActionBar(findViewById(R.id.myToolbar))
         initRecycler()
         initViewModel()
         initOnClicks()
@@ -74,7 +72,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
 
     // implements ClubListRecyclerCallback
     override fun onClick(club: Club) {
-        customToast.show(club.name)
+        DetailsActivity.startActivity(this@ClubsListActivity, club)
     }
 
     private fun initRecycler() {
