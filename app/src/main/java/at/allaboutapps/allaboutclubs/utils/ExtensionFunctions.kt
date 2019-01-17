@@ -4,7 +4,11 @@ import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
 import android.widget.ImageView
+import android.widget.TextView
 import at.allaboutapps.allaboutclubs.R
 import at.allaboutapps.allaboutclubs.api.models.Club
 import com.bumptech.glide.Glide
@@ -45,4 +49,11 @@ fun LinkedList<Club>.sort(order: SortOrder?) {
         this.sortByDescending { club -> club.name }
     else
         this.sortBy { club -> club.name }
+}
+fun TextView.setTextWithSpan(text: String, spanText: String, style: StyleSpan) {
+    val sb = SpannableStringBuilder(text)
+    val start = text.indexOf(spanText)
+    val end = start + spanText.length
+    sb.setSpan(style, start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+    this.text = sb
 }

@@ -2,5 +2,6 @@
     <string name="app_name">all about clubs</string>
     <string name="menu_sort">Sortierung</string>
     <string name="millions">%d Millionen</string>
-    <string name="back">Back</string>
+    <string name="back">Zurück</string>
+    <string name="club_from_is_worth_mln_euro">Der Club <b>%s</b> aus %s hat einen Wert von %d Millionen Euro.</string>
 </resources>
