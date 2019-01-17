@@ -51,7 +51,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
         when (menuItem.itemId) {
             R.id.menuSort -> {
                 viewModel.switchSortOrder()
-                if (viewModel.getSortOrder().value == SortOrder.ASC) {
+                if (viewModel.getSortOrder() == SortOrder.ASC) {
                     menuItem.setIcon(R.drawable.ic_filter_rotated)
                 } else {
                     menuItem.setIcon(R.drawable.ic_filter)
@@ -64,7 +64,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         val menuSort = menu.findItem(R.id.menuSort)
-        if (viewModel.getSortOrder().value == SortOrder.ASC) {
+        if (viewModel.getSortOrder() == SortOrder.ASC) {
             menuSort.setIcon(R.drawable.ic_filter_rotated)
         } else {
             menuSort.setIcon(R.drawable.ic_filter)

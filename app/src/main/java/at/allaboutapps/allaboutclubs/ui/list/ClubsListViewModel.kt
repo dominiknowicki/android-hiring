@@ -18,7 +18,7 @@ class ClubsListViewModel() : ViewModel() {
     private lateinit var dataSource: DataSource
     private lateinit var clubsList: MutableLiveData<LinkedList<Club>>
     private lateinit var error: MutableLiveData<String>
-    private lateinit var sortOrder: MutableLiveData<SortOrder>
+    private var sortOrder = SortOrder.ASC
     private var disposable: Disposable? = null
 
     constructor(dataSource: DataSource) : this() {
@@ -41,20 +41,12 @@ class ClubsListViewModel() : ViewModel() {
         return error
     }
 
-    fun getSortOrder(): MutableLiveData<SortOrder> {
-        if (!::sortOrder.isInitialized) {
-            sortOrder = MutableLiveData()
-            sortOrder.value = SortOrder.ASC
-        }
+    fun getSortOrder(): SortOrder {
         return sortOrder
     }
 
     fun switchSortOrder() {
-        if (!::sortOrder.isInitialized) {
-            sortOrder = MutableLiveData()
-            sortOrder.value = SortOrder.ASC
-        } else
-            sortOrder.value = sortOrder.value?.switch()
+        sortOrder = sortOrder.switch()
         refresh(false)
     }
 
@@ -74,7 +66,7 @@ class ClubsListViewModel() : ViewModel() {
                 .doFinally { disposable = null }
                 .subscribeBy(
                         onSuccess = {
-                            it.sort(sortOrder.value)
+                            it.sort(sortOrder)
                             clubsList.postValue(it)
                         },
                         onError = {

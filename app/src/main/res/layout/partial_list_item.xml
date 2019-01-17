@@ -4,9 +4,11 @@
     android:id="@+id/listItemRootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/selector_background_color"
     android:clickable="true"
     android:focusable="true"
-    android:padding="@dimen/horizontal_margin">
+    android:padding="@dimen/horizontal_margin"
+    android:stateListAnimator="@animator/transparentize_on_press">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageIV"
