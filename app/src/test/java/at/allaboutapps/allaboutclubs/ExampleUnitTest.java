@@ -1,4 +1,4 @@
-package at.allaboutapps.a3hiring;
+package at.allaboutapps.allaboutclubs;
 
 import org.junit.Test;
 

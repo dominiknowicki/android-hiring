@@ -1,4 +1,4 @@
-package at.allaboutapps.a3hiring.api.models
+package at.allaboutapps.allaboutclubs.api.models
 
 import android.os.Parcelable
 import com.fasterxml.jackson.annotation.JsonProperty

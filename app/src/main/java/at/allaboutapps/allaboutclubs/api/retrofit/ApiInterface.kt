@@ -1,6 +1,6 @@
-package at.allaboutapps.a3hiring.api.retrofit
+package at.allaboutapps.allaboutclubs.api.retrofit
 
-import at.allaboutapps.a3hiring.api.models.Club
+import at.allaboutapps.allaboutclubs.api.models.Club
 import io.reactivex.Single
 import retrofit2.http.GET
 import java.util.*

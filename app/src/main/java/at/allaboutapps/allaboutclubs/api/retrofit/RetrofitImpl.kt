@@ -1,6 +1,6 @@
-package at.allaboutapps.a3hiring.api.retrofit
+package at.allaboutapps.allaboutclubs.api.retrofit
 
-import at.allaboutapps.a3hiring.BuildConfig
+import at.allaboutapps.allaboutclubs.BuildConfig
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ihsanbal.logging.Level
@@ -13,7 +13,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://public.allaboutapps.at/"
-const val DEBUG_TAG = "AllAboutClubs"
 
 class RetrofitImpl {
 

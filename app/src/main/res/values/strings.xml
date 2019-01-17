@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">all about clubs</string>
     <string name="menu_sort">Sortierung</string>
+    <string name="millions">%d Millionen</string>
+    <string name="back">Back</string>
 </resources>

@@ -1,4 +1,4 @@
-package at.allaboutapps.a3hiring;
+package at.allaboutapps.allaboutclubs;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getTargetContext();
 
-    assertEquals("at.allaboutapps.a3hiring", appContext.getPackageName());
+    assertEquals("at.allaboutapps.allaboutclubs", appContext.getPackageName());
   }
 }

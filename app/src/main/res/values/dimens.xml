@@ -1,2 +1,5 @@
 <resources>
+    <dimen name="image_size">100dp</dimen>
+    <dimen name="horizontal_margin">10dp</dimen>
+
 </resources>
