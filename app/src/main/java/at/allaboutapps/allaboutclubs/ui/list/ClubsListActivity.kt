@@ -8,7 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import at.allaboutapps.allaboutclubs.AppImpl
 import at.allaboutapps.allaboutclubs.R
-import at.allaboutapps.allaboutclubs.api.DataSource
+import at.allaboutapps.allaboutclubs.api.DataModel
 import at.allaboutapps.allaboutclubs.api.models.Club
 import at.allaboutapps.allaboutclubs.ui.customviews.CustomToast
 import at.allaboutapps.allaboutclubs.ui.details.DetailsActivity
@@ -26,7 +26,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
         CustomToast(this@ClubsListActivity)
     }
 
-    private val offersResultAdapter by lazy {
+    private val clubListAdapter by lazy {
         ClubListAdapter(LinkedList(), this)
     }
 
@@ -49,11 +49,10 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
         when (menuItem.itemId) {
             R.id.menuSort -> {
                 viewModel.switchSortOrder()
-                if (viewModel.getSortOrder() == SortOrder.ASC) {
+                if (viewModel.getSortOrder() == SortOrder.ASC)
                     menuItem.setIcon(R.drawable.ic_filter_rotated)
-                } else {
+                else
                     menuItem.setIcon(R.drawable.ic_filter)
-                }
                 return true
             }
         }
@@ -62,11 +61,10 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         val menuSort = menu.findItem(R.id.menuSort)
-        if (viewModel.getSortOrder() == SortOrder.ASC) {
+        if (viewModel.getSortOrder() == SortOrder.ASC)
             menuSort.setIcon(R.drawable.ic_filter_rotated)
-        } else {
+        else
             menuSort.setIcon(R.drawable.ic_filter)
-        }
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -76,7 +74,7 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
     }
 
     private fun initRecycler() {
-        clubsListRecyclerView.adapter = offersResultAdapter
+        clubsListRecyclerView.adapter = clubListAdapter
         val layoutManager = LinearLayoutManager(this@ClubsListActivity)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         clubsListRecyclerView.layoutManager = layoutManager
@@ -84,11 +82,11 @@ class ClubsListActivity : AppCompatActivity(), ClubListRecyclerCallback {
     }
 
     private fun initViewModel() {
-        val dataSource: DataSource = (application as AppImpl).dataSource
-        viewModel = ViewModelProviders.of(this@ClubsListActivity, ClubsListViewModelFactory(dataSource)).get(ClubsListViewModel::class.java)
+        val dataModel: DataModel = (application as AppImpl).dataModel
+        viewModel = ViewModelProviders.of(this@ClubsListActivity, ClubsListViewModelFactory(dataModel)).get(ClubsListViewModel::class.java)
         viewModel.getClubsList().observe(this@ClubsListActivity, android.arch.lifecycle.Observer { clubList ->
             clubList?.let {
-                offersResultAdapter.setList(it)
+                clubListAdapter.setList(it)
                 clubsListSwipeRefreshLayout.isRefreshing = false
             }
         })

@@ -5,7 +5,7 @@ import android.view.View
 import at.allaboutapps.allaboutclubs.R
 import at.allaboutapps.allaboutclubs.api.models.Club
 import at.allaboutapps.allaboutclubs.utils.loadWithGlide
-import kotlinx.android.synthetic.main.partial_list_item.view.*
+import kotlinx.android.synthetic.main.viewholder_list_item.view.*
 
 class ClubListViewHolder(itemView: View, var callback: ClubListRecyclerCallback) : RecyclerView.ViewHolder(itemView) {
 

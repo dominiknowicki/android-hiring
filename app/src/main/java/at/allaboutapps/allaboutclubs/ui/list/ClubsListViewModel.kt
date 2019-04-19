@@ -2,7 +2,7 @@ package at.allaboutapps.allaboutclubs.ui.list
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import at.allaboutapps.allaboutclubs.api.DataSource
+import at.allaboutapps.allaboutclubs.api.DataModel
 import at.allaboutapps.allaboutclubs.api.models.Club
 import at.allaboutapps.allaboutclubs.utils.SortOrder
 import at.allaboutapps.allaboutclubs.utils.sort
@@ -15,14 +15,14 @@ import java.util.*
 
 class ClubsListViewModel() : ViewModel() {
 
-    private lateinit var dataSource: DataSource
+    private lateinit var dataModel: DataModel
     private lateinit var clubsList: MutableLiveData<LinkedList<Club>>
     private lateinit var error: MutableLiveData<String>
     private var sortOrder = SortOrder.ASC
     private var disposable: Disposable? = null
 
-    constructor(dataSource: DataSource) : this() {
-        this.dataSource = dataSource
+    constructor(dataModel: DataModel) : this() {
+        this.dataModel = dataModel
     }
 
     fun getClubsList(): MutableLiveData<LinkedList<Club>> {
@@ -60,7 +60,7 @@ class ClubsListViewModel() : ViewModel() {
         // prevents multiple calls:
         if (disposable != null) return
 
-        disposable = dataSource.fetchClubsList(forceFetch)
+        disposable = dataModel.fetchClubsList(forceFetch)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally { disposable = null }

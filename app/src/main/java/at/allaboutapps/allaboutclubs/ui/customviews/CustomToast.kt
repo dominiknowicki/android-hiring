@@ -17,12 +17,9 @@ class CustomToast @JvmOverloads constructor(context: Context, marginBottom: Int 
     init {
         val layout = LinearLayout(context)
         textView = TextView(context)
-
         setLayoutStyle(layout)
         setTextViewStyle()
-
         layout.addView(textView)
-
         toast = Toast(context)
         toast.view = layout
         toast.setGravity(Gravity.BOTTOM, 0, getDpAsInt(context, marginBottom))

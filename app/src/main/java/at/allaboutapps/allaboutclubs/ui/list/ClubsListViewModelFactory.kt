@@ -2,13 +2,13 @@ package at.allaboutapps.allaboutclubs.ui.list
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import at.allaboutapps.allaboutclubs.api.DataSource
+import at.allaboutapps.allaboutclubs.api.DataModel
 
 
 @Suppress("UNCHECKED_CAST")
-class ClubsListViewModelFactory(private var dataSource: DataSource) : ViewModelProvider.Factory {
+class ClubsListViewModelFactory(private var dataModel: DataModel) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ClubsListViewModel(dataSource) as T
+        return ClubsListViewModel(dataModel) as T
     }
 }

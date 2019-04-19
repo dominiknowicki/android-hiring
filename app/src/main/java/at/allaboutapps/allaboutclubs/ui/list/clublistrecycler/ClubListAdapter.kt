@@ -7,26 +7,26 @@ import at.allaboutapps.allaboutclubs.R
 import at.allaboutapps.allaboutclubs.api.models.Club
 import java.util.*
 
-class ClubListAdapter(private var offerList: LinkedList<Club>, private var callback: ClubListRecyclerCallback) : RecyclerView.Adapter<ClubListViewHolder>() {
+class ClubListAdapter(private var clubList: LinkedList<Club>, private var callback: ClubListRecyclerCallback) : RecyclerView.Adapter<ClubListViewHolder>() {
 
     init {
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubListViewHolder {
-        return ClubListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.partial_list_item, parent, false), callback)
+        return ClubListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.viewholder_list_item, parent, false), callback)
     }
 
     override fun onBindViewHolder(holder: ClubListViewHolder, position: Int) {
-        holder.bind(offerList[position])
+        holder.bind(clubList[position])
     }
 
     fun setList(clubList: LinkedList<Club>) {
-        this.offerList = clubList
+        this.clubList = clubList
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return offerList.size
+        return clubList.size
     }
 }

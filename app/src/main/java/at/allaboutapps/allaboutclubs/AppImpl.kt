@@ -1,17 +1,14 @@
 package at.allaboutapps.allaboutclubs
 
 import android.support.multidex.MultiDexApplication
-import at.allaboutapps.allaboutclubs.api.DataSource
-import at.allaboutapps.allaboutclubs.api.retrofit.ApiInterface
+import at.allaboutapps.allaboutclubs.api.DataModel
 import at.allaboutapps.allaboutclubs.api.retrofit.RetrofitImpl
+
+const val APP_TAG = "AAA_AAC"
 
 class AppImpl : MultiDexApplication() {
 
-    private var apiInterface: ApiInterface = RetrofitImpl().apiInterface
-    lateinit var dataSource: DataSource
-
-    override fun onCreate() {
-        super.onCreate()
-        dataSource = DataSource(apiInterface)
+    val dataModel: DataModel by lazy {
+        DataModel(RetrofitImpl().apiInterface)
     }
 }
